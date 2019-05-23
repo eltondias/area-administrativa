@@ -1,0 +1,25 @@
+{
+  "areaadmistrativaApp": {
+    "disponibilidade": {
+      "home": {
+        "title": "Disponibilidades",
+        "createLabel": "Criar novo Disponibilidade",
+        "createOrEditLabel": "Criar ou editar Disponibilidade"
+      },
+      "created": "Um novo Disponibilidade foi criado com o identificador {{ param }}",
+      "updated": "Um Disponibilidade foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Disponibilidade foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Disponibilidade {{ id }}?"
+      },
+      "detail": {
+        "title": "Disponibilidade"
+      },
+      "horaInicio": "Hora Inicio",
+      "horaFim": "Hora Fim",
+      "diaSemana": "Dia Semana",
+      "turno": "Turno",
+      "voluntario": "Voluntario"
+    }
+  }
+}

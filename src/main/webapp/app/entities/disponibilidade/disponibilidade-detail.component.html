@@ -1,0 +1,45 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="disponibilidade">
+            <h2><span jhiTranslate="areaadmistrativaApp.disponibilidade.detail.title">Disponibilidade</span> {{disponibilidade.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="areaadmistrativaApp.disponibilidade.horaInicio">Hora Inicio</span></dt>
+                <dd>
+                    <span>{{disponibilidade.horaInicio}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.disponibilidade.horaFim">Hora Fim</span></dt>
+                <dd>
+                    <span>{{disponibilidade.horaFim}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.disponibilidade.diaSemana">Dia Semana</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'areaadmistrativaApp.DiaSemanaEnum.' + disponibilidade.diaSemana}}">{{disponibilidade.diaSemana}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.disponibilidade.turno">Turno</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'areaadmistrativaApp.TurnoEnum.' + disponibilidade.turno}}">{{disponibilidade.turno}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.disponibilidade.voluntario">Voluntario</span></dt>
+                <dd>
+                    <div *ngIf="disponibilidade.voluntario">
+                        <a [routerLink]="['/voluntario', disponibilidade.voluntario?.id, 'view']">{{disponibilidade.voluntario?.nome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/disponibilidade', disponibilidade.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

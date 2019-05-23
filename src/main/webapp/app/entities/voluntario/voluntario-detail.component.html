@@ -1,0 +1,71 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="voluntario">
+            <h2><span jhiTranslate="areaadmistrativaApp.voluntario.detail.title">Voluntario</span> {{voluntario.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.nome">Nome</span></dt>
+                <dd>
+                    <span>{{voluntario.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.urlFotoPerfil">Url Foto Perfil</span></dt>
+                <dd>
+                    <span>{{voluntario.urlFotoPerfil}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.cpf">Cpf</span></dt>
+                <dd>
+                    <span>{{voluntario.cpf}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.login">Login</span></dt>
+                <dd>
+                    <span>{{voluntario.login}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.senha">Senha</span></dt>
+                <dd>
+                    <span>{{voluntario.senha}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.isAdmin">Is Admin</span></dt>
+                <dd>
+                    <span>{{voluntario.isAdmin}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.dataNascimento">Data Nascimento</span></dt>
+                <dd>
+                    <span>{{voluntario.dataNascimento}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.dataCadastro">Data Cadastro</span></dt>
+                <dd>
+                    <span>{{voluntario.dataCadastro}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.situacao">Situacao</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'areaadmistrativaApp.EstadoVoluntarioEnum.' + voluntario.situacao}}">{{voluntario.situacao}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.habilidade">Habilidade</span></dt>
+                <dd>
+                    <span *ngFor="let habilidade of voluntario.habilidades; let last = last">
+                        <a [routerLink]="['/habilidade', habilidade?.id, 'view' ]">{{habilidade.nome}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.voluntario.profissao">Profissao</span></dt>
+                <dd>
+                    <span *ngFor="let profissao of voluntario.profissaos; let last = last">
+                        <a [routerLink]="['/profissao', profissao?.id, 'view' ]">{{profissao.nome}}</a>{{last ? '' : ', '}}
+                    </span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/voluntario', voluntario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+{
+  "areaadmistrativaApp": {
+    "recursoNecessario": {
+      "home": {
+        "title": "Recurso Necessarios",
+        "createLabel": "Create a new Recurso Necessario",
+        "createOrEditLabel": "Create or edit a Recurso Necessario"
+      },
+      "created": "A new Recurso Necessario is created with identifier {{ param }}",
+      "updated": "A Recurso Necessario is updated with identifier {{ param }}",
+      "deleted": "A Recurso Necessario is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Recurso Necessario {{ id }}?"
+      },
+      "detail": {
+        "title": "Recurso Necessario"
+      },
+      "nome": "Nome",
+      "descricao": "Descricao",
+      "quantidade": "Quantidade",
+      "isFinanceiro": "Is Financeiro",
+      "valor": "Valor",
+      "doacao": "Doacao",
+      "acao": "Acao",
+      "campanha": "Campanha"
+    }
+  }
+}

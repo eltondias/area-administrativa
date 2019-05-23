@@ -1,0 +1,23 @@
+{
+  "areaadmistrativaApp": {
+    "redeSocial": {
+      "home": {
+        "title": "Rede Socials",
+        "createLabel": "Create a new Rede Social",
+        "createOrEditLabel": "Create or edit a Rede Social"
+      },
+      "created": "A new Rede Social is created with identifier {{ param }}",
+      "updated": "A Rede Social is updated with identifier {{ param }}",
+      "deleted": "A Rede Social is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Rede Social {{ id }}?"
+      },
+      "detail": {
+        "title": "Rede Social"
+      },
+      "tipoRedeSocial": "Tipo Rede Social",
+      "url": "Url",
+      "voluntario": "Voluntario"
+    }
+  }
+}

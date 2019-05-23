@@ -1,0 +1,12 @@
+{
+  "areaadmistrativaApp": {
+    "TipoRedeSocial": {
+      "null": "",
+      "FACEBOOK": "FACEBOOK",
+      "TWITER": "TWITER",
+      "LINKEDIN": "LINKEDIN",
+      "INSTAGRAN": "INSTAGRAN",
+      "YOUTUBE": "YOUTUBE"
+    }
+  }
+}

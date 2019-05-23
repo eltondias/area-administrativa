@@ -1,0 +1,23 @@
+{
+  "areaadmistrativaApp": {
+    "profissaoNecessariaAcao": {
+      "home": {
+        "title": "Profissao Necessaria Acaos",
+        "createLabel": "Create a new Profissao Necessaria Acao",
+        "createOrEditLabel": "Create or edit a Profissao Necessaria Acao"
+      },
+      "created": "A new Profissao Necessaria Acao is created with identifier {{ param }}",
+      "updated": "A Profissao Necessaria Acao is updated with identifier {{ param }}",
+      "deleted": "A Profissao Necessaria Acao is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Profissao Necessaria Acao {{ id }}?"
+      },
+      "detail": {
+        "title": "Profissao Necessaria Acao"
+      },
+      "quantidadeMinima": "Quantidade Minima",
+      "profissao": "Profissao",
+      "acao": "Acao"
+    }
+  }
+}

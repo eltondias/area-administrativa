@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="recursoNecessario">
+            <h2><span jhiTranslate="areaadmistrativaApp.recursoNecessario.detail.title">Recurso Necessario</span> {{recursoNecessario.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="areaadmistrativaApp.recursoNecessario.nome">Nome</span></dt>
+                <dd>
+                    <span>{{recursoNecessario.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.recursoNecessario.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{recursoNecessario.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.recursoNecessario.quantidade">Quantidade</span></dt>
+                <dd>
+                    <span>{{recursoNecessario.quantidade}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.recursoNecessario.isFinanceiro">Is Financeiro</span></dt>
+                <dd>
+                    <span>{{recursoNecessario.isFinanceiro}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.recursoNecessario.valor">Valor</span></dt>
+                <dd>
+                    <span>{{recursoNecessario.valor}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.recursoNecessario.acao">Acao</span></dt>
+                <dd>
+                    <div *ngIf="recursoNecessario.acao">
+                        <a [routerLink]="['/acao', recursoNecessario.acao?.id, 'view']">{{recursoNecessario.acao?.nome}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.recursoNecessario.campanha">Campanha</span></dt>
+                <dd>
+                    <div *ngIf="recursoNecessario.campanha">
+                        <a [routerLink]="['/campanha', recursoNecessario.campanha?.id, 'view']">{{recursoNecessario.campanha?.nome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/recurso-necessario', recursoNecessario.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-participacao-heading" jhiTranslate="areaadmistrativaApp.participacao.home.createOrEditLabel">Create or edit a Participacao</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!participacao.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.participacao.dataHoraEmissaoCertificado" for="field_dataHoraEmissaoCertificado">Data Hora Emissao Certificado</label>
+                    <div class="d-flex">
+                        <input id="field_dataHoraEmissaoCertificado" type="datetime-local" class="form-control" name="dataHoraEmissaoCertificado" formControlName="dataHoraEmissaoCertificado" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.participacao.cargaHoraria" for="field_cargaHoraria">Carga Horaria</label>
+                    <input type="number" class="form-control" name="cargaHoraria" id="field_cargaHoraria"
+                           formControlName="cargaHoraria"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.participacao.voluntario" for="field_voluntario">Voluntario</label>
+                    <select class="form-control" id="field_voluntario" name="voluntario" formControlName="voluntario">
+                        <option *ngIf="!editForm.get('voluntario').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="voluntarioOption.id === editForm.get('voluntario').value?.id ? editForm.get('voluntario').value : voluntarioOption" *ngFor="let voluntarioOption of voluntarios; trackBy: trackVoluntarioById">{{voluntarioOption.nome}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('voluntario').invalid && (editForm.get('voluntario').dirty || editForm.get('voluntario').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('voluntario').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.participacao.acao" for="field_acao">Acao</label>
+                    <select class="form-control" id="field_acao" name="acao" formControlName="acao">
+                        <option *ngIf="!editForm.get('acao').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="acaoOption.id === editForm.get('acao').value?.id ? editForm.get('acao').value : acaoOption" *ngFor="let acaoOption of acaos; trackBy: trackAcaoById">{{acaoOption.nome}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('acao').invalid && (editForm.get('acao').dirty || editForm.get('acao').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('acao').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

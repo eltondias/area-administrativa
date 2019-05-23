@@ -1,0 +1,74 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="areaadmistrativaApp.recursoNecessario.home.title">Recurso Necessarios</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-recurso-necessario" [routerLink]="['/recurso-necessario/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="areaadmistrativaApp.recursoNecessario.home.createLabel">
+            Create new Recurso Necessario
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="recursoNecessarios">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.recursoNecessario.nome">Nome</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.recursoNecessario.descricao">Descricao</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.recursoNecessario.quantidade">Quantidade</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.recursoNecessario.isFinanceiro">Is Financeiro</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.recursoNecessario.valor">Valor</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.recursoNecessario.acao">Acao</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.recursoNecessario.campanha">Campanha</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let recursoNecessario of recursoNecessarios ;trackBy: trackId">
+                <td><a [routerLink]="['/recurso-necessario', recursoNecessario.id, 'view' ]">{{recursoNecessario.id}}</a></td>
+                <td>{{recursoNecessario.nome}}</td>
+                <td>{{recursoNecessario.descricao}}</td>
+                <td>{{recursoNecessario.quantidade}}</td>
+                <td>{{recursoNecessario.isFinanceiro}}</td>
+                <td>{{recursoNecessario.valor}}</td>
+                <td>
+                    <div *ngIf="recursoNecessario.acao">
+                        <a [routerLink]="['../acao', recursoNecessario.acao?.id, 'view' ]" >{{recursoNecessario.acao?.nome}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="recursoNecessario.campanha">
+                        <a [routerLink]="['../campanha', recursoNecessario.campanha?.id, 'view' ]" >{{recursoNecessario.campanha?.nome}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/recurso-necessario', recursoNecessario.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/recurso-necessario', recursoNecessario.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'recurso-necessario', { outlets: { popup: recursoNecessario.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

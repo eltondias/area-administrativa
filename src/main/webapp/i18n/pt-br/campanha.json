@@ -1,0 +1,27 @@
+{
+  "areaadmistrativaApp": {
+    "campanha": {
+      "home": {
+        "title": "Campanhas",
+        "createLabel": "Criar novo Campanha",
+        "createOrEditLabel": "Criar ou editar Campanha"
+      },
+      "created": "Um novo Campanha foi criado com o identificador {{ param }}",
+      "updated": "Um Campanha foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Campanha foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Campanha {{ id }}?"
+      },
+      "detail": {
+        "title": "Campanha"
+      },
+      "nome": "Nome",
+      "descricao": "Descricao",
+      "slogan": "Slogan",
+      "dataHoraInicio": "Data Hora Inicio",
+      "dataHoraFim": "Data Hora Fim",
+      "coordenador": "Coordenador",
+      "recursoNecessario": "Recurso Necessario"
+    }
+  }
+}

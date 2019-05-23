@@ -1,0 +1,69 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="endereco">
+            <h2><span jhiTranslate="areaadmistrativaApp.endereco.detail.title">Endereco</span> {{endereco.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.logradouro">Logradouro</span></dt>
+                <dd>
+                    <span>{{endereco.logradouro}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.numero">Numero</span></dt>
+                <dd>
+                    <span>{{endereco.numero}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.complemento">Complemento</span></dt>
+                <dd>
+                    <span>{{endereco.complemento}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.bairro">Bairro</span></dt>
+                <dd>
+                    <span>{{endereco.bairro}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.cep">Cep</span></dt>
+                <dd>
+                    <span>{{endereco.cep}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.latitude">Latitude</span></dt>
+                <dd>
+                    <span>{{endereco.latitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.longitude">Longitude</span></dt>
+                <dd>
+                    <span>{{endereco.longitude}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.voluntario">Voluntario</span></dt>
+                <dd>
+                    <div *ngIf="endereco.voluntario">
+                        <a [routerLink]="['/voluntario', endereco.voluntario?.id, 'view']">{{endereco.voluntario?.nome}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.cidade">Cidade</span></dt>
+                <dd>
+                    <div *ngIf="endereco.cidade">
+                        <a [routerLink]="['/cidade', endereco.cidade?.id, 'view']">{{endereco.cidade?.nome}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.endereco.acao">Acao</span></dt>
+                <dd>
+                    <div *ngIf="endereco.acao">
+                        <a [routerLink]="['/acao', endereco.acao?.id, 'view']">{{endereco.acao?.nome}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/endereco', endereco.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{
+  "areaadmistrativaApp": {
+    "habilidade": {
+      "home": {
+        "title": "Habilidades",
+        "createLabel": "Criar novo Habilidade",
+        "createOrEditLabel": "Criar ou editar Habilidade"
+      },
+      "created": "Um novo Habilidade foi criado com o identificador {{ param }}",
+      "updated": "Um Habilidade foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Habilidade foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Habilidade {{ id }}?"
+      },
+      "detail": {
+        "title": "Habilidade"
+      },
+      "nome": "Nome",
+      "descricao": "Descricao",
+      "voluntario": "Voluntario"
+    }
+  }
+}

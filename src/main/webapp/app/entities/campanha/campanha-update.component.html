@@ -1,0 +1,96 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-campanha-heading" jhiTranslate="areaadmistrativaApp.campanha.home.createOrEditLabel">Create or edit a Campanha</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!campanha.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.campanha.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome').invalid && (editForm.get('nome').dirty || editForm.get('nome').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.campanha.descricao" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                           formControlName="descricao"/>
+                    <div *ngIf="editForm.get('descricao').invalid && (editForm.get('descricao').dirty || editForm.get('descricao').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descricao').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.campanha.slogan" for="field_slogan">Slogan</label>
+                    <input type="text" class="form-control" name="slogan" id="field_slogan"
+                           formControlName="slogan"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.campanha.dataHoraInicio" for="field_dataHoraInicio">Data Hora Inicio</label>
+                    <div class="d-flex">
+                        <input id="field_dataHoraInicio" type="datetime-local" class="form-control" name="dataHoraInicio" formControlName="dataHoraInicio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dataHoraInicio').invalid && (editForm.get('dataHoraInicio').dirty || editForm.get('dataHoraInicio').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dataHoraInicio').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dataHoraInicio').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.campanha.dataHoraFim" for="field_dataHoraFim">Data Hora Fim</label>
+                    <div class="d-flex">
+                        <input id="field_dataHoraFim" type="datetime-local" class="form-control" name="dataHoraFim" formControlName="dataHoraFim" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dataHoraFim').invalid && (editForm.get('dataHoraFim').dirty || editForm.get('dataHoraFim').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dataHoraFim').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dataHoraFim').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.campanha.coordenador" for="field_coordenador">Coordenador</label>
+                    <select class="form-control" id="field_coordenador" name="coordenador" formControlName="coordenador">
+                        <option *ngIf="!editForm.get('coordenador').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="voluntarioOption.id === editForm.get('coordenador').value?.id ? editForm.get('coordenador').value : voluntarioOption" *ngFor="let voluntarioOption of coordenadors; trackBy: trackVoluntarioById">{{voluntarioOption.nome}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('coordenador').invalid && (editForm.get('coordenador').dirty || editForm.get('coordenador').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('coordenador').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

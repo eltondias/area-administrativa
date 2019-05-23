@@ -1,0 +1,82 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="areaadmistrativaApp.voluntario.home.title">Voluntarios</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-voluntario" [routerLink]="['/voluntario/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="areaadmistrativaApp.voluntario.home.createLabel">
+            Create new Voluntario
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="voluntarios">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.nome">Nome</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.urlFotoPerfil">Url Foto Perfil</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.cpf">Cpf</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.login">Login</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.senha">Senha</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.isAdmin">Is Admin</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.dataNascimento">Data Nascimento</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.dataCadastro">Data Cadastro</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.situacao">Situacao</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.habilidade">Habilidade</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.voluntario.profissao">Profissao</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let voluntario of voluntarios ;trackBy: trackId">
+                <td><a [routerLink]="['/voluntario', voluntario.id, 'view' ]">{{voluntario.id}}</a></td>
+                <td>{{voluntario.nome}}</td>
+                <td>{{voluntario.urlFotoPerfil}}</td>
+                <td>{{voluntario.cpf}}</td>
+                <td>{{voluntario.login}}</td>
+                <td>{{voluntario.senha}}</td>
+                <td>{{voluntario.isAdmin}}</td>
+                <td>{{voluntario.dataNascimento | date:'medium'}}</td>
+                <td>{{voluntario.dataCadastro | date:'medium'}}</td>
+                <td jhiTranslate="{{'areaadmistrativaApp.EstadoVoluntarioEnum.' + voluntario.situacao}}">{{voluntario.situacao}}</td>
+                <td>
+                    <span *ngFor="let habilidade of voluntario.habilidades; let last = last">
+                            <a class="form-control-static" [routerLink]="['../habilidade', habilidade?.id, 'view' ]">{{habilidade.nome}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td>
+                    <span *ngFor="let profissao of voluntario.profissaos; let last = last">
+                            <a class="form-control-static" [routerLink]="['../profissao', profissao?.id, 'view' ]">{{profissao.nome}}</a>{{last ? '' : ', '}}
+                        </span>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/voluntario', voluntario.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/voluntario', voluntario.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'voluntario', { outlets: { popup: voluntario.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+{
+  "areaadmistrativaApp": {
+    "acao": {
+      "home": {
+        "title": "Acaos",
+        "createLabel": "Criar novo Acao",
+        "createOrEditLabel": "Criar ou editar Acao"
+      },
+      "created": "Um novo Acao foi criado com o identificador {{ param }}",
+      "updated": "Um Acao foi atualizado com o identificador {{ param }}",
+      "deleted": "Um Acao foi excluído com o identificador {{ param }}",
+      "delete": {
+        "question": "Tem certeza de que deseja excluir Acao {{ id }}?"
+      },
+      "detail": {
+        "title": "Acao"
+      },
+      "nome": "Nome",
+      "descricao": "Descricao",
+      "meta": "Meta",
+      "banner": "Banner",
+      "dataHoraInicio": "Data Hora Inicio",
+      "dataHoraFim": "Data Hora Fim",
+      "custos": "Custos",
+      "situacaoAcao": "Situacao Acao",
+      "profissaoNecessariaAcao": "Profissao Necessaria Acao",
+      "participacao": "Participacao",
+      "endereco": "Endereco",
+      "recursoNecessario": "Recurso Necessario"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "areaadmistrativaApp": {
+    "participacao": {
+      "home": {
+        "title": "Participacaos",
+        "createLabel": "Create a new Participacao",
+        "createOrEditLabel": "Create or edit a Participacao"
+      },
+      "created": "A new Participacao is created with identifier {{ param }}",
+      "updated": "A Participacao is updated with identifier {{ param }}",
+      "deleted": "A Participacao is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Participacao {{ id }}?"
+      },
+      "detail": {
+        "title": "Participacao"
+      },
+      "dataHoraEmissaoCertificado": "Data Hora Emissao Certificado",
+      "cargaHoraria": "Carga Horaria",
+      "voluntario": "Voluntario",
+      "acao": "Acao"
+    }
+  }
+}

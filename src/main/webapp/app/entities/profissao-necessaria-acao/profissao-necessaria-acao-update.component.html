@@ -1,0 +1,65 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-profissao-necessaria-acao-heading" jhiTranslate="areaadmistrativaApp.profissaoNecessariaAcao.home.createOrEditLabel">Create or edit a Profissao Necessaria Acao</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!profissaoNecessariaAcao.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.profissaoNecessariaAcao.quantidadeMinima" for="field_quantidadeMinima">Quantidade Minima</label>
+                    <input type="number" class="form-control" name="quantidadeMinima" id="field_quantidadeMinima"
+                           formControlName="quantidadeMinima"/>
+                    <div *ngIf="editForm.get('quantidadeMinima').invalid && (editForm.get('quantidadeMinima').dirty || editForm.get('quantidadeMinima').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('quantidadeMinima').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('quantidadeMinima')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.profissaoNecessariaAcao.profissao" for="field_profissao">Profissao</label>
+                    <select class="form-control" id="field_profissao" name="profissao" formControlName="profissao">
+                        <option *ngIf="!editForm.get('profissao').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="profissaoOption.id === editForm.get('profissao').value?.id ? editForm.get('profissao').value : profissaoOption" *ngFor="let profissaoOption of profissaos; trackBy: trackProfissaoById">{{profissaoOption.nome}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('profissao').invalid && (editForm.get('profissao').dirty || editForm.get('profissao').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('profissao').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.profissaoNecessariaAcao.acao" for="field_acao">Acao</label>
+                    <select class="form-control" id="field_acao" name="acao" formControlName="acao">
+                        <option *ngIf="!editForm.get('acao').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="acaoOption.id === editForm.get('acao').value?.id ? editForm.get('acao').value : acaoOption" *ngFor="let acaoOption of acaos; trackBy: trackAcaoById">{{acaoOption.nome}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('acao').invalid && (editForm.get('acao').dirty || editForm.get('acao').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('acao').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

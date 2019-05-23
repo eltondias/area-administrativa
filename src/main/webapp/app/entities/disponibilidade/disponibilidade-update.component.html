@@ -1,0 +1,102 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-disponibilidade-heading" jhiTranslate="areaadmistrativaApp.disponibilidade.home.createOrEditLabel">Create or edit a Disponibilidade</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!disponibilidade.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.disponibilidade.horaInicio" for="field_horaInicio">Hora Inicio</label>
+                    <div class="d-flex">
+                        <input id="field_horaInicio" type="datetime-local" class="form-control" name="horaInicio" formControlName="horaInicio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('horaInicio').invalid && (editForm.get('horaInicio').dirty || editForm.get('horaInicio').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('horaInicio').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('horaInicio').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.disponibilidade.horaFim" for="field_horaFim">Hora Fim</label>
+                    <div class="d-flex">
+                        <input id="field_horaFim" type="datetime-local" class="form-control" name="horaFim" formControlName="horaFim" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('horaFim').invalid && (editForm.get('horaFim').dirty || editForm.get('horaFim').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('horaFim').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('horaFim').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.disponibilidade.diaSemana" for="field_diaSemana">Dia Semana</label>
+                    <select class="form-control" name="diaSemana" formControlName="diaSemana" id="field_diaSemana">
+                        <option value="SEGUNDA">{{'areaadmistrativaApp.DiaSemanaEnum.SEGUNDA' | translate}}</option>
+                        <option value="TERCA">{{'areaadmistrativaApp.DiaSemanaEnum.TERCA' | translate}}</option>
+                        <option value="QUARTA">{{'areaadmistrativaApp.DiaSemanaEnum.QUARTA' | translate}}</option>
+                        <option value="QUINTA">{{'areaadmistrativaApp.DiaSemanaEnum.QUINTA' | translate}}</option>
+                        <option value="SEXTA">{{'areaadmistrativaApp.DiaSemanaEnum.SEXTA' | translate}}</option>
+                        <option value="SABADO">{{'areaadmistrativaApp.DiaSemanaEnum.SABADO' | translate}}</option>
+                        <option value="DOMINGO">{{'areaadmistrativaApp.DiaSemanaEnum.DOMINGO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('diaSemana').invalid && (editForm.get('diaSemana').dirty || editForm.get('diaSemana').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('diaSemana').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.disponibilidade.turno" for="field_turno">Turno</label>
+                    <select class="form-control" name="turno" formControlName="turno" id="field_turno">
+                        <option value="MANHA">{{'areaadmistrativaApp.TurnoEnum.MANHA' | translate}}</option>
+                        <option value="TARDE">{{'areaadmistrativaApp.TurnoEnum.TARDE' | translate}}</option>
+                        <option value="NOITE">{{'areaadmistrativaApp.TurnoEnum.NOITE' | translate}}</option>
+                        <option value="INTERMEDIARIO">{{'areaadmistrativaApp.TurnoEnum.INTERMEDIARIO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('turno').invalid && (editForm.get('turno').dirty || editForm.get('turno').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('turno').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.disponibilidade.voluntario" for="field_voluntario">Voluntario</label>
+                    <select class="form-control" id="field_voluntario" name="voluntario" formControlName="voluntario">
+                        <option *ngIf="!editForm.get('voluntario').value" [ngValue]="null" selected></option>
+                        <option [ngValue]="voluntarioOption.id === editForm.get('voluntario').value?.id ? editForm.get('voluntario').value : voluntarioOption" *ngFor="let voluntarioOption of voluntarios; trackBy: trackVoluntarioById">{{voluntarioOption.nome}}</option>
+                    </select>
+                </div>
+                <div *ngIf="editForm.get('voluntario').invalid && (editForm.get('voluntario').dirty || editForm.get('voluntario').touched)">
+                    <small class="form-text text-danger"
+                           *ngIf="editForm.get('voluntario').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                    </small>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

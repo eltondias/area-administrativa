@@ -1,0 +1,108 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-acao-heading" jhiTranslate="areaadmistrativaApp.acao.home.createOrEditLabel">Create or edit a Acao</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!acao.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.acao.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome').invalid && (editForm.get('nome').dirty || editForm.get('nome').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.acao.descricao" for="field_descricao">Descricao</label>
+                    <input type="text" class="form-control" name="descricao" id="field_descricao"
+                           formControlName="descricao"/>
+                    <div *ngIf="editForm.get('descricao').invalid && (editForm.get('descricao').dirty || editForm.get('descricao').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('descricao').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.acao.meta" for="field_meta">Meta</label>
+                    <input type="text" class="form-control" name="meta" id="field_meta"
+                           formControlName="meta"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.acao.banner" for="field_banner">Banner</label>
+                    <input type="text" class="form-control" name="banner" id="field_banner"
+                           formControlName="banner"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.acao.dataHoraInicio" for="field_dataHoraInicio">Data Hora Inicio</label>
+                    <div class="d-flex">
+                        <input id="field_dataHoraInicio" type="datetime-local" class="form-control" name="dataHoraInicio" formControlName="dataHoraInicio" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dataHoraInicio').invalid && (editForm.get('dataHoraInicio').dirty || editForm.get('dataHoraInicio').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dataHoraInicio').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dataHoraInicio').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.acao.dataHoraFim" for="field_dataHoraFim">Data Hora Fim</label>
+                    <div class="d-flex">
+                        <input id="field_dataHoraFim" type="datetime-local" class="form-control" name="dataHoraFim" formControlName="dataHoraFim" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                    <div *ngIf="editForm.get('dataHoraFim').invalid && (editForm.get('dataHoraFim').dirty || editForm.get('dataHoraFim').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('dataHoraFim').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('dataHoraFim').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                            This field should be a date and time.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.acao.custos" for="field_custos">Custos</label>
+                    <input type="number" class="form-control" name="custos" id="field_custos"
+                           formControlName="custos"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.acao.situacaoAcao" for="field_situacaoAcao">Situacao Acao</label>
+                    <select class="form-control" name="situacaoAcao" formControlName="situacaoAcao" id="field_situacaoAcao">
+                        <option value="PRE_ACAO">{{'areaadmistrativaApp.SituacaoAcaoEnum.PRE_ACAO' | translate}}</option>
+                        <option value="EM_ACAO">{{'areaadmistrativaApp.SituacaoAcaoEnum.EM_ACAO' | translate}}</option>
+                        <option value="SUSPENSA">{{'areaadmistrativaApp.SituacaoAcaoEnum.SUSPENSA' | translate}}</option>
+                        <option value="PAUSADA">{{'areaadmistrativaApp.SituacaoAcaoEnum.PAUSADA' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('situacaoAcao').invalid && (editForm.get('situacaoAcao').dirty || editForm.get('situacaoAcao').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('situacaoAcao').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

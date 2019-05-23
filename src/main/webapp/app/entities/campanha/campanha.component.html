@@ -1,0 +1,68 @@
+<div>
+    <h2 id="page-heading">
+        <span jhiTranslate="areaadmistrativaApp.campanha.home.title">Campanhas</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-campanha" [routerLink]="['/campanha/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span  jhiTranslate="areaadmistrativaApp.campanha.home.createLabel">
+            Create new Campanha
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="campanhas">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.campanha.nome">Nome</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.campanha.descricao">Descricao</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.campanha.slogan">Slogan</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.campanha.dataHoraInicio">Data Hora Inicio</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.campanha.dataHoraFim">Data Hora Fim</span></th>
+            <th><span jhiTranslate="areaadmistrativaApp.campanha.coordenador">Coordenador</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let campanha of campanhas ;trackBy: trackId">
+                <td><a [routerLink]="['/campanha', campanha.id, 'view' ]">{{campanha.id}}</a></td>
+                <td>{{campanha.nome}}</td>
+                <td>{{campanha.descricao}}</td>
+                <td>{{campanha.slogan}}</td>
+                <td>{{campanha.dataHoraInicio | date:'medium'}}</td>
+                <td>{{campanha.dataHoraFim | date:'medium'}}</td>
+                <td>
+                    <div *ngIf="campanha.coordenador">
+                        <a [routerLink]="['../voluntario', campanha.coordenador?.id, 'view' ]" >{{campanha.coordenador?.nome}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group">
+                        <button type="submit"
+                                [routerLink]="['/campanha', campanha.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/campanha', campanha.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', 'campanha', { outlets: { popup: campanha.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

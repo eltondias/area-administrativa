@@ -1,0 +1,11 @@
+{
+  "areaadmistrativaApp": {
+    "TurnoEnum": {
+      "null": "",
+      "MANHA": "MANHA",
+      "TARDE": "TARDE",
+      "NOITE": "NOITE",
+      "INTERMEDIARIO": "INTERMEDIARIO"
+    }
+  }
+}

@@ -1,0 +1,122 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-voluntario-heading" jhiTranslate="areaadmistrativaApp.voluntario.home.createOrEditLabel">Create or edit a Voluntario</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!voluntario.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.nome" for="field_nome">Nome</label>
+                    <input type="text" class="form-control" name="nome" id="field_nome"
+                           formControlName="nome"/>
+                    <div *ngIf="editForm.get('nome').invalid && (editForm.get('nome').dirty || editForm.get('nome').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('nome').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.urlFotoPerfil" for="field_urlFotoPerfil">Url Foto Perfil</label>
+                    <input type="text" class="form-control" name="urlFotoPerfil" id="field_urlFotoPerfil"
+                           formControlName="urlFotoPerfil"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.cpf" for="field_cpf">Cpf</label>
+                    <input type="text" class="form-control" name="cpf" id="field_cpf"
+                           formControlName="cpf"/>
+                    <div *ngIf="editForm.get('cpf').invalid && (editForm.get('cpf').dirty || editForm.get('cpf').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('cpf').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.login" for="field_login">Login</label>
+                    <input type="text" class="form-control" name="login" id="field_login"
+                           formControlName="login"/>
+                    <div *ngIf="editForm.get('login').invalid && (editForm.get('login').dirty || editForm.get('login').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('login').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.senha" for="field_senha">Senha</label>
+                    <input type="text" class="form-control" name="senha" id="field_senha"
+                           formControlName="senha"/>
+                    <div *ngIf="editForm.get('senha').invalid && (editForm.get('senha').dirty || editForm.get('senha').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('senha').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.isAdmin" for="field_isAdmin">Is Admin</label>
+                    <input type="checkbox" class="form-control" name="isAdmin" id="field_isAdmin"
+                           formControlName="isAdmin"/>
+                    <div *ngIf="editForm.get('isAdmin').invalid && (editForm.get('isAdmin').dirty || editForm.get('isAdmin').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('isAdmin').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.dataNascimento" for="field_dataNascimento">Data Nascimento</label>
+                    <div class="d-flex">
+                        <input id="field_dataNascimento" type="datetime-local" class="form-control" name="dataNascimento" formControlName="dataNascimento" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.dataCadastro" for="field_dataCadastro">Data Cadastro</label>
+                    <div class="d-flex">
+                        <input id="field_dataCadastro" type="datetime-local" class="form-control" name="dataCadastro" formControlName="dataCadastro" placeholder="YYYY-MM-DD HH:mm"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="areaadmistrativaApp.voluntario.situacao" for="field_situacao">Situacao</label>
+                    <select class="form-control" name="situacao" formControlName="situacao" id="field_situacao">
+                        <option value="ATIVO">{{'areaadmistrativaApp.EstadoVoluntarioEnum.ATIVO' | translate}}</option>
+                        <option value="INATIVO">{{'areaadmistrativaApp.EstadoVoluntarioEnum.INATIVO' | translate}}</option>
+                        <option value="SUSPENSO">{{'areaadmistrativaApp.EstadoVoluntarioEnum.SUSPENSO' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('situacao').invalid && (editForm.get('situacao').dirty || editForm.get('situacao').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('situacao').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label jhiTranslate="areaadmistrativaApp.voluntario.habilidade" for="field_habilidades">Habilidade</label>
+                    <select class="form-control" id="field_habilidades" multiple name="habilidades" formControlName="habilidades">
+                        <option [ngValue]="getSelected(editForm.get('habilidades').value, habilidadeOption)" *ngFor="let habilidadeOption of habilidades; trackBy: trackHabilidadeById">{{habilidadeOption.nome}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label jhiTranslate="areaadmistrativaApp.voluntario.profissao" for="field_profissaos">Profissao</label>
+                    <select class="form-control" id="field_profissaos" multiple name="profissaos" formControlName="profissaos">
+                        <option [ngValue]="getSelected(editForm.get('profissaos').value, profissaoOption)" *ngFor="let profissaoOption of profissaos; trackBy: trackProfissaoById">{{profissaoOption.nome}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

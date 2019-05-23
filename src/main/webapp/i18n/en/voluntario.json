@@ -1,0 +1,38 @@
+{
+  "areaadmistrativaApp": {
+    "voluntario": {
+      "home": {
+        "title": "Voluntarios",
+        "createLabel": "Create a new Voluntario",
+        "createOrEditLabel": "Create or edit a Voluntario"
+      },
+      "created": "A new Voluntario is created with identifier {{ param }}",
+      "updated": "A Voluntario is updated with identifier {{ param }}",
+      "deleted": "A Voluntario is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Voluntario {{ id }}?"
+      },
+      "detail": {
+        "title": "Voluntario"
+      },
+      "nome": "Nome",
+      "urlFotoPerfil": "Url Foto Perfil",
+      "cpf": "Cpf",
+      "login": "Login",
+      "senha": "Senha",
+      "isAdmin": "Is Admin",
+      "dataNascimento": "Data Nascimento",
+      "dataCadastro": "Data Cadastro",
+      "situacao": "Situacao",
+      "disponibilidade": "Disponibilidade",
+      "doacao": "Doacao",
+      "participacao": "Participacao",
+      "endereco": "Endereco",
+      "telefone": "Telefone",
+      "email": "Email",
+      "redeSocial": "Rede Social",
+      "habilidade": "Habilidade",
+      "profissao": "Profissao"
+    }
+  }
+}

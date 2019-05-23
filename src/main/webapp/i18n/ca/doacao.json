@@ -1,0 +1,27 @@
+{
+  "areaadmistrativaApp": {
+    "doacao": {
+      "home": {
+        "title": "Doacaos",
+        "createLabel": "Create a new Doacao",
+        "createOrEditLabel": "Create or edit a Doacao"
+      },
+      "created": "A new Doacao is created with identifier {{ param }}",
+      "updated": "A Doacao is updated with identifier {{ param }}",
+      "deleted": "A Doacao is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Doacao {{ id }}?"
+      },
+      "detail": {
+        "title": "Doacao"
+      },
+      "descricao": "Descricao",
+      "quantidade": "Quantidade",
+      "isFinanceiro": "Is Financeiro",
+      "isAnomina": "Is Anomina",
+      "dataHora": "Data Hora",
+      "doador": "Doador",
+      "recursoNecessario": "Recurso Necessario"
+    }
+  }
+}

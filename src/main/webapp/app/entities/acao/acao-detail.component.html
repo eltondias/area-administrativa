@@ -1,0 +1,55 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="acao">
+            <h2><span jhiTranslate="areaadmistrativaApp.acao.detail.title">Acao</span> {{acao.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="areaadmistrativaApp.acao.nome">Nome</span></dt>
+                <dd>
+                    <span>{{acao.nome}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.acao.descricao">Descricao</span></dt>
+                <dd>
+                    <span>{{acao.descricao}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.acao.meta">Meta</span></dt>
+                <dd>
+                    <span>{{acao.meta}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.acao.banner">Banner</span></dt>
+                <dd>
+                    <span>{{acao.banner}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.acao.dataHoraInicio">Data Hora Inicio</span></dt>
+                <dd>
+                    <span>{{acao.dataHoraInicio}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.acao.dataHoraFim">Data Hora Fim</span></dt>
+                <dd>
+                    <span>{{acao.dataHoraFim}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.acao.custos">Custos</span></dt>
+                <dd>
+                    <span>{{acao.custos}}</span>
+                </dd>
+                <dt><span jhiTranslate="areaadmistrativaApp.acao.situacaoAcao">Situacao Acao</span></dt>
+                <dd>
+                    <span jhiTranslate="{{'areaadmistrativaApp.SituacaoAcaoEnum.' + acao.situacaoAcao}}">{{acao.situacaoAcao}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/acao', acao.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

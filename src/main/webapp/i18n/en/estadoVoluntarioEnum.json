@@ -1,0 +1,10 @@
+{
+  "areaadmistrativaApp": {
+    "EstadoVoluntarioEnum": {
+      "null": "",
+      "ATIVO": "ATIVO",
+      "INATIVO": "INATIVO",
+      "SUSPENSO": "SUSPENSO"
+    }
+  }
+}
